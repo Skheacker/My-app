@@ -1,0 +1,19 @@
+workflows:
+  android-workflow:
+    name: Android APK Build
+    environment:
+      flutter: stable
+    scripts:
+      # Dependencies fetch karna
+      - flutter pub get
+      # Clean previous build
+      - flutter clean
+      # Release APK build
+      - flutter build apk --release
+    artifacts:
+      # Generated APK location
+      - build/app/outputs/flutter-apk/app-release.apk
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
